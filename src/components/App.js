@@ -6,7 +6,6 @@ import Graph from "./Graph";
 import html2pdf from 'html2pdf.js';
 import buttonStyles from "../styles/button.module.css";
 import * as d3 from "d3"
-// import { ReactDOM } from 'react';
 
 function App() {
   const [state, setState] = useState({
@@ -80,7 +79,7 @@ function App() {
         <Filter state={state} setState={setState} setDates={setDates} dates={dates} objects={objects} objectList={objectList} setObjectList={setObjectList}></Filter>
         <svg ref={legendRef}></svg>
         {objectList.map(objectId => (
-          <Graph key={objectId} id={objectId} initData={data.filter(item => item.objectNum === objectId)} state={state} setState={setState} setDates={setDates} dates={dates} objects={objects} objectList={objectList} setObjectList={setObjectList}></Graph>
+          <Graph key={objectId} id={objectId} initData={data.filter(item => item.objectNum === objectId)} state={state} setState={setState}></Graph>
         ))}
       </div>
 
