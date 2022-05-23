@@ -29,6 +29,9 @@ const Graph = (props) => {
     const selectText = svg.selectAll(".text")
       .data(initData);
 
+    const selectLines = svg.selectAll('.line')
+      .data(initData)
+
     svg.append('path')
       .datum(initData)
       .attr('d', d3.line()
@@ -43,12 +46,31 @@ const Graph = (props) => {
     svg.append('path')
       .datum(initData)
       .attr('d', d3.line()
+        .x(function (d) { return x(d3.timeParse('%Y-%m-%d')(d.factDate)) })
+        .y(100)
+      )
+      .attr("fill", "none")
+      .attr("stroke", "#c70469")
+      .attr("stroke-width", 2);
+
+    svg.append('path')
+      .datum(initData)
+      .attr('d', d3.line()
         .x(function (d) { return x(d3.timeParse('%Y-%m-%d')(d.plannedDate)) })
         .y(50)
       )
       .attr("fill", "none")
       .attr("stroke", "#000")
       .attr("stroke-width", 2);
+
+    selectLines.enter().append('line')
+      .attr('x1', function (d) { return x(d3.timeParse('%Y-%m-%d')(d.plannedDate)) })
+      .attr('y1', 50)
+      .attr('x2', function (d) { return x(d3.timeParse('%Y-%m-%d')(d.factDate)) })
+      .attr('y2', 100)
+      .attr("stroke", "grey")
+      .attr("stroke-width", "1")
+      .style("stroke-dasharray", ("3, 3"));
 
     selectCircle.enter().append("circle")
       .attr("r", 6)
@@ -100,6 +122,7 @@ const Graph = (props) => {
       d3.selectAll("circle").remove();
       d3.selectAll("text").remove();
       d3.selectAll("path").remove();
+      d3.selectAll('line').remove();
     }
 
   });
