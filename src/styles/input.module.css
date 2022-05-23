@@ -1,0 +1,16 @@
+.date {
+  width: 100px;
+  height: 20px;
+  transition: border .2s linear;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.date:hover {
+  border: 1px solid darkorange;
+}
+
+.date:focus {
+  outline: none;
+  border: 1px solid darkorange;
+}
