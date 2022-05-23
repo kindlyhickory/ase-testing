@@ -10,7 +10,6 @@ const Graph = (props) => {
 
 
   useEffect(() => {
-    console.log('Работаю')
     const svg = d3.select(chart.current)
       .attr('width', dimensions.width)
       .attr('height', dimensions.height)
