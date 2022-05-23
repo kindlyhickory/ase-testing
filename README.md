@@ -7,3 +7,8 @@ npm start
 Для сборки приложения  
 npm i  
 npm run build  
+
+Применённые технологии:  
+-JavaScript  
+-React  
+-D3.js  
